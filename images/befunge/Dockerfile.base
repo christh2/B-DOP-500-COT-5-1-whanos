@@ -1,0 +1,8 @@
+FROM debian:latest
+ENV SHELL=/bin/bash
+ONBUILD RUN apt-get update && apt-get install -y python3
+ONBUILD RUN apt-get install -y wget
+ONBUILD WORKDIR /env
+ONBUILD COPY . .
+ONBUILD RUN wget https://raw.githubusercontent.com/CT075/PyFunge/refs/heads/master/befunge_interpreter.py
+ONBUILD CMD ["python3", "befunge_interpreter.py", "main.bf"]

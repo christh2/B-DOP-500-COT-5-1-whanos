@@ -1,0 +1,7 @@
+FROM maven:latest
+ENV SHELL=/bin/bash
+ONBUILD WORKDIR /env
+ONBUILD COPY . .
+ONBUILD RUN mvn package
+ONBUILD CMD ["java", "-jar", "target/app.jar"]
+

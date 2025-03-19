@@ -1,0 +1,6 @@
+FROM maven:latest
+ENV SHELL=/bin/bash
+WORKDIR /env
+COPY . .
+RUN mvn package
+CMD ["java", "-jar", "app.jar"]
